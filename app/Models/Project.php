@@ -9,6 +9,8 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'description', 'user_id' , 'status'];
+
     public function user()
     {
         // Project belongsTo a User

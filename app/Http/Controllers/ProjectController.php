@@ -15,7 +15,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = auth()->user()->projects;
-        return view('projects.index' ,compact('projects'));
+        return view('projects.index', compact('projects'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
@@ -36,7 +36,18 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+        // if validation failed laravel will redirect to current page "create.blade.php"
+
+        // concatenate the id to link the user with the project
+        $data['user_id'] = auth()->id();
+
+        Project::create($data); // dont forget to add fillable because you used create()
+
+        return redirect('/projects');
     }
 
     /**
@@ -45,9 +56,9 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show(Project $project) // model route binding
     {
-        //
+        return view('projects.show', compact('project'));
     }
 
     /**
@@ -70,7 +81,10 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $project->update([
+            'status' => request('status')
+        ]);
+        return redirect('/projects/' . $project->id);
     }
 
     /**

@@ -17,6 +17,19 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <style>
+        .btn-delete {
+            background: url('/images/trash.svg') no-repeat;
+            background-repeat: no-repeat;
+            background-size: 1.1rem 1.1rem;
+            padding-bottom: 0px;
+            padding-top: 0px;
+            padding-left: 8px;
+            border: 0px;
+            outline: none;
+        }
+    </style>
 </head>
 
 <body>
