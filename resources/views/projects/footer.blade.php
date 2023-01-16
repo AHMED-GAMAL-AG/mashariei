@@ -1,5 +1,5 @@
-<div class="card-footer bg-transparent" dir="rtl">
-    <div class="d-flex">
+<div class="card-footer border-0 bg-transparent" dir="rtl">
+    <div class="d-flex  text-sm">
         <div class="d-flex align-items-center">
             <img src="/images/clock.svg" alt="">
             <div class="mr-2">
@@ -7,7 +7,7 @@
             </div>
         </div>
 
-        <div class="d-flex align-items-center mr-4">
+        <div class="d-flex align-items-center  mr-3">
             <img src="/images/list-check.svg" alt="">
             <div class="mr-2">
                 {{-- {{ count($project->tasks) }} --}}
@@ -18,7 +18,7 @@
             <form action="/projects/{{ $project->id }}" method="post">
                 @method('DELETE')
                 @csrf
-                <input type="submit" class="btn-delete">
+                <input type="submit" class="btn btn-delete mt-2" value="">
             </form>
         </div>
     </div>
