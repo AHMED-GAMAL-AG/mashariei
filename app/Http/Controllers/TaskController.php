@@ -22,13 +22,17 @@ class TaskController extends Controller
 
     public function update(Project $project, Task $task)
     {
-
-
         $task->update([
             // the checkbox return "on" if clicked else return nothing so use has() if done contains any thing(on) return 1 else 0
             'done' => request()->has('done')
         ]);
 
         return back();
+    }
+
+    public function destroy(Project $project, Task $task)
+    {
+        $task->delete();
+        return redirect('/projects/' .  $project->id);
     }
 }

@@ -81,9 +81,15 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $project->update([
-            'status' => request('status')
+        // to use the same method update in edit and projects/{project}=> to update status page use sometimes to ignore not added values
+        $data = request()->validate([
+            'title' => 'sometimes|required',
+            'description' => 'sometimes|required',
+            'status' => 'sometimes|required',
         ]);
+
+        $project->update($data);
+
         return redirect('/projects/' . $project->id);
     }
 
@@ -95,6 +101,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect('/projects');
     }
 }

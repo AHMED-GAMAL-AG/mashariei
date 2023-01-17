@@ -61,7 +61,7 @@
 
         <div class="col-lg-8">
             @foreach ($project->tasks as $task)
-                <div class="card d-flex flex-row">
+                <div class="card p-3 mb-3 d-flex flex-row align-items-center">
                     {{-- if the checkbox is checked make a line through muted make it gray --}}
                     <div class={{ $task->done ? 'checked muted' : '' }}>
                         {{ $task->body }}
@@ -71,12 +71,20 @@
                         <form action="/projects/{{ $project->id }}/tasks/{{ $task->id }}" method="post">
                             @method('PATCH')
                             @csrf
-                            <input type="checkbox" name="done" class="ml-4"
-                                {{ $task->done ? 'checked' : '' }} onchange="this.form.submit()">
+                            <input type="checkbox" name="done" class="ml-4" {{ $task->done ? 'checked' : '' }}
+                                onchange="this.form.submit()">
                             {{-- the checkbox return "on" if clicked else return nothing --}}
                         </form>
-
                     </div>
+
+                    <div class="d-flex align-items-center">
+                        <form action="/projects/{{ $project->id }}/tasks/{{ $task->id }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <input type="submit" class="btn btn-delete mt-1" value="">
+                        </form>
+                    </div>
+
                 </div>
             @endforeach
             <div class="card">

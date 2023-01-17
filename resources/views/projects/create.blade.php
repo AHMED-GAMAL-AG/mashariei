@@ -13,6 +13,7 @@
 
             <form action="/projects" method="post" dir="rtl">
                 @csrf
+                {{-- @include('projects.form' , ['project' => new App\Models\Project();]) you can pass the variable this way but i used compact in the project controller and passed it to the view it is passed automaticly to the include --}}
                 @include('projects.form')
 
                 <div class="mb-3">

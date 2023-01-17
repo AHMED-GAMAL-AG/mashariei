@@ -11,7 +11,7 @@
                 تعديل المشروع
             </h3>
 
-            <form action="/projects/{{ $project->id }}/edit" method="post" dir="rtl">
+            <form action="/projects/{{ $project->id }}" method="post" dir="rtl">
                 @method('PATCH')
                 @csrf
                 @include('projects.form')
