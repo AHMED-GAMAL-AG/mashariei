@@ -23,9 +23,9 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Project $project)
     {
-        return view('projects.create');
+        return view('projects.create', compact('project'));
     }
 
     /**
@@ -69,7 +69,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -97,5 +97,4 @@ class ProjectController extends Controller
     {
         //
     }
-
 }

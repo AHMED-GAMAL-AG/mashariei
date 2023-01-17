@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'إنشاء مشروع جديد')
+@section('title', 'تعديل المشروع')
 
 
 @section('content')
@@ -8,15 +8,16 @@
     <div class="row justify-content-center text-right">
         <div class="col-10">
             <h3 class="text-center pb-5 font-weight-bold">
-                مشروع جديد
+                تعديل المشروع
             </h3>
 
-            <form action="/projects" method="post" dir="rtl">
+            <form action="/projects/{{ $project->id }}/edit" method="post" dir="rtl">
+                @method('PATCH')
                 @csrf
                 @include('projects.form')
 
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">إنشاء</button>
+                    <button type="submit" class="btn btn-primary">تعديل</button>
                     <a href="/projects" class="btn btn-light">إلغاء</a>
                 </div>
             </form>

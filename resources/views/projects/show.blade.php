@@ -13,7 +13,7 @@
     </header>
 
     <section class="row text-right" dir="rtl">
-        <div class="col-lg 4">
+        <div class="col-lg-4">
             {{-- project details --}}
             <div class="card text-right">
                 <div class="card-body">
@@ -59,19 +59,19 @@
             </div>
         </div>
 
-        <div class="col-lg 8">
+        <div class="col-lg-8">
             @foreach ($project->tasks as $task)
-                <div class="card">
+                <div class="card d-flex flex-row">
                     {{-- if the checkbox is checked make a line through muted make it gray --}}
                     <div class={{ $task->done ? 'checked muted' : '' }}>
                         {{ $task->body }}
                     </div>
 
-                    <div>
+                    <div class="mr-auto">
                         <form action="/projects/{{ $project->id }}/tasks/{{ $task->id }}" method="post">
                             @method('PATCH')
                             @csrf
-                            <input type="checkbox" name="done" class="form-control ml-4"
+                            <input type="checkbox" name="done" class="ml-4"
                                 {{ $task->done ? 'checked' : '' }} onchange="this.form.submit()">
                             {{-- the checkbox return "on" if clicked else return nothing --}}
                         </form>
@@ -80,7 +80,7 @@
                 </div>
             @endforeach
             <div class="card">
-                <form action="/projects/{{ $project->id }}/tasks" method="POST">
+                <form action="/projects/{{ $project->id }}/tasks" method="POST" class="d-flex">
                     @csrf
                     <input type="text" name="body" class="form-control p-2 ml-2" placeholder="أضف مهمة جديدة">
                     <button type="submit" class="btn btn-primary">إضافة</button>
