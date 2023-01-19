@@ -58,6 +58,9 @@ class ProjectController extends Controller
      */
     public function show(Project $project) // model route binding
     {
+        // only the user should see his projects
+        abort_if(auth()->id() != $project->user_id, 403); // abort with code 403 not authorized short hand of if statement
+
         return view('projects.show', compact('project'));
     }
 
@@ -69,6 +72,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        abort_if(auth()->id() != $project->user_id, 403); // abort with code 403 not authorized short hand of if statement
+
         return view('projects.edit', compact('project'));
     }
 
@@ -81,7 +86,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        // to use the same method update in edit and projects/{project}=> to update status page use sometimes to ignore not added values
+        // to use the same method update in edit and projects/{project}=> to update status page use sometimes to ignore not added values some is added and some are not
         $data = request()->validate([
             'title' => 'sometimes|required',
             'description' => 'sometimes|required',

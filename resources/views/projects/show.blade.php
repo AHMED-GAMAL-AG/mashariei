@@ -93,6 +93,11 @@
                     <input type="text" name="body" class="form-control p-2 ml-2" placeholder="أضف مهمة جديدة">
                     <button type="submit" class="btn btn-primary">إضافة</button>
                 </form>
+                @error('body')
+                    <div class="text-danger">
+                        <small>{{ $message }}</small>
+                    </div>
+                @enderror
             </div>
         </div>
     </section>

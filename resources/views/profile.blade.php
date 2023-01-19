@@ -20,22 +20,47 @@
                             <label for="name">الاسم</label>
                             <input type="text" name="name" id="name" class="form-control text-right"
                                 value="{{ auth()->user()->name }}">
+
+                            @error('name')
+                                <div class="text-danger">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="email">البريد الإلكتروني</label>
                             <input type="email" name="email" id="email" class="form-control text-right"
                                 value="{{ auth()->user()->email }}">
+
+                            @error('email')
+                                <div class="text-danger">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="password">كلمة المرور</label>
                             <input type="password" name="password" id="password" class="form-control text-right">
+
+                            @error('password')
+                                <div class="text-danger">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="password-confirmation">تأكيد كلمة المرور</label>
-                            <input type="password" name="password-confirmation" id="password-confirmation" class="form-control text-right">
+                            <input type="password" name="password-confirmation" id="password-confirmation"
+                                class="form-control text-right">
+
+                            @error('password-confirmation')
+                                <div class="text-danger">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="form-group">
@@ -45,11 +70,18 @@
                                 <label class="custom-file-label text-left" id="image-label" for="image"
                                     data-browse="استعرض"></label>
                             </div>
+                            @error('image')
+                                <div class="text-danger">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
+                        </div>
 
-                            <div class="form-group d-flex mt-5">
-                                <button type="submit" class="btn btn-primary mr-2">حفظ التعديلات</button>
-                                <button type="submit" class="btn btn-light" form="logout">تسجيل الخروج</button>
-                            </div>
+                        <div class="form-group d-flex mt-5">
+                            <button type="submit" class="btn btn-primary mr-2">حفظ التعديلات</button>
+                            <button type="submit" class="btn btn-light" form="logout">تسجيل الخروج</button>
+                        </div>
+
                     </form>
 
                     <form action="/logout" method="post" id="logout">
