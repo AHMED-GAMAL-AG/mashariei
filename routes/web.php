@@ -17,20 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// auth
 Auth::routes();
 
 // another way to use the middleware is in the constructor of the ProjectController return $this->middleware('auth');
+// projects you can hit index with '/' or '/projects'
+Route::get('/', [ProjectController::class, 'index'])->middleware('auth');
 Route::resource('/projects', ProjectController::class)->middleware('auth');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// tasks
 Route::post('/projects/{project}/tasks', [TaskController::class, 'store']);
 Route::patch('/projects/{project}/tasks/{task}', [TaskController::class, 'update']);
 Route::delete('/projects/{project}/tasks/{task}', [TaskController::class, 'destroy']);
 
+// profile
 Route::get('/profile' , [ProfileController::class , 'index'])->middleware('auth');
 Route::patch('/profile', [ProfileController::class , 'update']);

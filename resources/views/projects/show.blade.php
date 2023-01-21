@@ -17,7 +17,7 @@
     <section class="row text-right" dir="rtl">
         <div class="col-lg-4">
             {{-- project details --}}
-            <div class="card text-right">
+            <div class="card mb-4">
                 <div class="card-body">
                     <div class="status">
                         @switch($project->status)
@@ -65,7 +65,7 @@
         {{-- tasks --}}
         <div class="col-lg-8">
             @foreach ($project->tasks as $task)
-                <div class="card p-3 mb-3 d-flex flex-row align-items-center">
+                <div class="card p-4 mb-3 d-flex flex-row align-items-center mt-3">
                     {{-- if the checkbox is checked make a line through muted make it gray --}}
                     <div class={{ $task->done ? 'checked muted' : '' }}>
                         {{ $task->body }}
@@ -94,7 +94,7 @@
             <div class="card">
                 <form action="/projects/{{ $project->id }}/tasks" method="POST" class="d-flex">
                     @csrf
-                    <input type="text" name="body" class="form-control p-2 ml-2" placeholder="أضف مهمة جديدة">
+                    <input type="text" name="body" class="form-control p-2 ml-2 border-0" placeholder="أضف مهمة جديدة">
                     <button type="submit" class="btn btn-primary">إضافة</button>
                 </form>
                 @error('body')
