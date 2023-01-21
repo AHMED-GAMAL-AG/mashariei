@@ -1,13 +1,15 @@
 @extends('layouts.app')
 
 
+@section('title', $project->title)
+
 @section('content')
-    <header class="d-flex justify-content-between align-items-center my-5" dir="rtl">
+    <header class="d-flex justify-content-between align-items-center my-5 text-center" dir="rtl">
         <div class="h6 text-dark">
             <a href="/projects">المشاريع / {{ $project->title }}</a>
         </div>
 
-        <div>
+        <div class="mt-4 mt-sm-0">
             <a href="/projects/{{ $project->id }}/edit" class="btn btn-primary px-4" role="button">تعديل المشروع</a>
         </div>
     </header>
@@ -39,18 +41,19 @@
                             {{ $project->description }}
                         </div>
 
-                        @include('projects.footer')
                     </div>
                 </div>
+                @include('projects.footer')
             </div>
 
-            <div class="card">
+            <div class="card mt-4">
                 <div class="card-body">
+                    <h5 class="font-wight-bold">تغير حالة المشروع</h5>
                     <form action="/projects/{{ $project->id }}" method="POST">
                         @csrf
                         @method('PATCH')
                         <select name="status" class="custom-select" onchange="this.form.submit()">
-                            <option value="0" {{ $project->status == 0 ? 'selected' : '' }}>قيد الإنجاز</option>
+                            <option value="0" {{ $project->status == 0 ? 'selected' : '' }}>قيد التنفيذ</option>
                             <option value="1" {{ $project->status == 1 ? 'selected' : '' }}>مكتمل</option>
                             <option value="2" {{ $project->status == 2 ? 'selected' : '' }}>ملغي</option>
                         </select>
@@ -59,6 +62,7 @@
             </div>
         </div>
 
+        {{-- tasks --}}
         <div class="col-lg-8">
             @foreach ($project->tasks as $task)
                 <div class="card p-3 mb-3 d-flex flex-row align-items-center">
@@ -67,7 +71,7 @@
                         {{ $task->body }}
                     </div>
 
-                    <div class="mr-auto">
+                    <div class="d-flex mr-auto">
                         <form action="/projects/{{ $project->id }}/tasks/{{ $task->id }}" method="post">
                             @method('PATCH')
                             @csrf

@@ -14,7 +14,7 @@
     <section class="row text-right" dir="rtl">
         @forelse($projects as $project)
             <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-                <div class="card card-height">
+                <div class="card text-right" style="hight: 230px">
                     <div class="card-body">
                         <div class="status">
                             @switch($project->status)
@@ -38,15 +38,15 @@
                                 {{ Str::limit($project->description, 150) }}
                             </div>
 
-                            @include('projects.footer')
                         </div>
                     </div>
+                    @include('projects.footer')
                 </div>
             </div>
             @empty
-                <div class="m-auto align-content-center">
+                <div class="m-auto align-content-center text-center">
                     <p>لوحة العمل خالية من المشاريع</p>
-                    <div class="mt-5">
+                    <div class="text-center mt-5">
                         <a href="/projects/create" class="btn btn-primary btn-lg d-inline-flex align-items-center"
                             role="button">أنشئ مشروعاً جديداً الآن</a>
                     </div>

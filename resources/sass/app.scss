@@ -1,8 +1,11 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+// @import url('https://fonts.bunny.net/css?family=Nunito');
+@import url(//fonts.googleapis.com/earlyaccess/notosanskufiarabic.css);
+@import url(//fonts.googleapis.com/earlyaccess/notonaskharabicui.css);
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+@import 'styles'; // should be imported after the bootstrap bec it will ignore it
