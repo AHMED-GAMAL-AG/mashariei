@@ -15,11 +15,17 @@ The user can view his projects on the homepage :
 ![image](https://github.com/AHMED-GAMAL-AG/mashariei/assets/76778937/e5c92677-7d4a-4d32-8b59-2e4732a47c4f)
 
 The user can view the project :
+
 ![image](https://github.com/AHMED-GAMAL-AG/mashariei/assets/76778937/0eb7801a-b298-4f04-904d-14eeef18e451)
 
 The user can add tasks, do/undo tasks, and change the status of the project :
 
 ![image](https://github.com/AHMED-GAMAL-AG/mashariei/assets/76778937/1c4caa26-550c-4646-bf9f-3d29891e0398)
+
+The user can add a new project :
+
+![image](https://github.com/AHMED-GAMAL-AG/mashariei/assets/76778937/e0b63221-e809-40c8-9de5-d9eb39ce06b8)
+
 
 The user can edit the project details :
 
