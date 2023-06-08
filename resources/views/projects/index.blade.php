@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', 'المشاريع')
+
+
 @section('content')
     <header class="d-flex justify-content-between align-items-center my-5" dir="rtl">
         <div class="h6 text-dark">
